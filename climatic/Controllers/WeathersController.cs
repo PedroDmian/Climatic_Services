@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using climatic.Class;
+using System.Threading.Tasks;
 
 namespace climatic.Controllers
 {
@@ -13,28 +14,28 @@ namespace climatic.Controllers
     {
         [HttpGet]
         [Route("")]
-        public HttpResponseMessage weather()
+        public async Task<HttpResponseMessage> weather()
         {
             HttpResponseMessage response = new HttpResponseMessage();
             
             response.StatusCode = HttpStatusCode.OK;
-
-            /*Response<Models.User> login = Models.User.login(user);
             
-            response.Content = new ObjectContent<Response<Models.User>>(login, Utiles.Formatter);*/
+            Response<Models.Weather> weather = await Models.Weather.getWeather(1334, 223);
+            
+            response.Content = new ObjectContent<Response<Models.Weather>>(weather, Utiles.Formatter);
 
-            /*if (login.Estatus == Estatus.Exito)
+            if (weather.Estatus == Estatus.Exito)
             {
                 response.StatusCode = HttpStatusCode.OK;
             }
-            else if (login.Estatus == Estatus.Advertencia)
+            else if (weather.Estatus == Estatus.Advertencia)
             {
                 response.StatusCode = HttpStatusCode.Unauthorized;
             }
             else
             {
                 response.StatusCode = HttpStatusCode.InternalServerError;
-            }*/
+            }
 
             return response;
         }

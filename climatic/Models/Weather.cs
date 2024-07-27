@@ -25,8 +25,20 @@ namespace climatic.Models
             {
                 Estatus = Estatus.Error
             };
+            
+            Models.Weather weather = new Models.Weather()
+            {
+                temperature = "28",
+                min = "20",
+                max = "30",
+                airQuality = "23"
+            };
+            
+            res.Datos = weather;
+            res.Mensaje = "Se obtuvo el weather correctamente";
+            res.Estatus = Estatus.Exito;
 
-            try
+            /*try
             {
                 string apiKey = "o2v9L5xFPSzgNdcn";
                 string url = $"http://my.meteoblue.com/packages/basic-1h_basic-day?lat={latitud}&lon={longitud}&apikey={apiKey}";
@@ -43,7 +55,7 @@ namespace climatic.Models
             {
                 res.Mensaje = "Hay un error al intentar registrar el usuario";
                 res.MensajeTecnico = ex.Message;
-            }
+            }*/
 
             return res;
         }
