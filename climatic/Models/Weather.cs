@@ -18,6 +18,10 @@ namespace climatic.Models
         public string min { get; set; }
         public string max { get; set; }
         public string airQuality { get; set; }
+        
+        public string wind { get; set; }
+        public string humidity { get; set; }
+        public string precipitation_pro { get; set; }
 
         public async static Task<Response<Weather>> getWeather(int latitud, int longitud)
         {
@@ -31,7 +35,10 @@ namespace climatic.Models
                 temperature = "28",
                 min = "20",
                 max = "30",
-                airQuality = "23"
+                airQuality = "23",
+                wind = "11",
+                humidity = "72",
+                precipitation_pro = "7"
             };
             
             res.Datos = weather;

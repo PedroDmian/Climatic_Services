@@ -111,7 +111,7 @@ namespace climatic.Models
             {
                 Boolean isExistEmail = new Data.Users(new Data.ConexionBD()).validUserEmailExist(user.email);
 
-                if (isExistEmail)
+                if (!isExistEmail)
                 {
                     res.Datos = false;
                     res.Mensaje = "El correo ya existe";
